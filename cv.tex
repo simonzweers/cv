@@ -1,0 +1,159 @@
+% CV Simon Zweers -- compile with: pdflatex cv.tex  (or: latexmk -pdf cv.tex)
+\documentclass[10pt]{article}
+
+% ---------- Page layout ----------
+\usepackage[letterpaper,top=0.55in,bottom=0.6in,left=0.6in,right=0.6in]{geometry}
+\usepackage{paracol}
+\setcolumnwidth{0.58\textwidth,0.34\textwidth}
+\setlength{\columnsep}{0.08\textwidth}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------- Fonts (pdfLaTeX-friendly stand-ins for Merriweather / Open Sans) ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{charter}            % serif body, close to Merriweather
+\usepackage[sfdefault=false]{roboto}       % sans for small labels, close to Open Sans
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage{microtype}
+\usepackage{fontawesome5}
+
+% ---------- Colors ----------
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{2079C7}
+\definecolor{bodytext}{HTML}{555555}
+\definecolor{datetext}{HTML}{777777}
+\definecolor{heading}{HTML}{000000}
+
+% ---------- Links ----------
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={CV Simon Zweers},pdfauthor={Simon Zweers}}
+
+\usepackage{tikz}
+
+% ---------- Commands ----------
+\newcommand{\cvname}[1]{{\fontsize{30}{34}\selectfont\bfseries\color{heading}#1\par}\vspace{6pt}}
+
+\newcommand{\cvsection}[1]{%
+  \vspace{18pt}%
+  {\sffamily\bfseries\footnotesize\color{accent}\MakeUppercase{#1}\par}%
+  \vspace{12pt}}
+
+% \cventry{Organisation}{Place}{Role}{Dates}{Description}
+\newcommand{\cventry}[5]{%
+  {\raggedright\large\color{heading}\textbf{#1,} #2 --- \textit{#3}\par}%
+  \vspace{3pt}%
+  {\sffamily\scriptsize\color{datetext}\MakeUppercase{#4}\par}%
+  \vspace{3pt}%
+  {\raggedright\small\color{bodytext}#5\par}%
+  \vspace{12pt}}
+
+% \skillgroup{Category}{Comma-separated skills}
+\newcommand{\skillgroup}[2]{%
+  {\raggedright\small\bfseries\color{heading}#1\par}%
+  \vspace{2pt}%
+  {\raggedright\small\color{bodytext}#2\par}%
+  \vspace{10pt}}
+
+\newcommand{\skill}[1]{{\raggedright\small\color{bodytext}#1\par}\vspace{7pt}}
+
+% Contact line: icon + clickable, visibly-styled link
+\newcommand{\contact}[3]{%
+  \makebox[1.4em][l]{\color{accent}#1}\href{#2}{\color{accent}\underline{#3}}\par\vspace{3pt}}
+
+% Coloured placeholder the size of the photo
+\newcommand{\photobox}{%
+  \begin{tikzpicture}
+    \fill[accent!35, rounded corners=4pt] (0,0) rectangle (1.65in,1.58in);
+  \end{tikzpicture}\par}
+
+% =====================================================================
+\begin{document}
+\begin{paracol}{2}
+
+% ---------------- Left column: header ----------------
+\vspace*{4pt}
+\cvname{Simon Zweers}
+{\raggedright\small\color{bodytext}
+Ik ben een enthousiaste en veelzijdige student Electrical Engineering aan de
+Technische Universiteit Eindhoven, met een passie voor zowel muziek als
+technologie. Al van jongs af aan speel ik cello en heb ik ervaring als
+orkestmusicus. Deze muzikale achtergrond heeft mijn discipline, teamwork
+en creatief denkvermogen veel geholpen. Daarnaast heb ik een langdurige
+interesse in computers en technologie, wat me heeft geleid tot mijn huidige
+studie, waarin ik mijn analytische vaardigheden en technische kennis
+verder ontwikkel.\par}
+
+% ---------------- Right column: photo + contact ----------------
+\switchcolumn
+\photobox
+\vspace{8pt}
+{\sffamily\footnotesize
+\contact{\faPhone*}{tel:+31683426852}{+31 6 83426852}
+\contact{\faEnvelope}{mailto:simon.zweers@protonmail.com}{simon.zweers@protonmail.com}
+\contact{\faLinkedin}{https://www.linkedin.com/in/simon-zweers-754ba0284}{in/simon-zweers}
+\contact{\faGlobe}{https://simonzweers.com}{simonzweers.com}
+}
+
+% ---------------- Left: experience ----------------
+\switchcolumn*
+\cvsection{Ervaring}
+
+\cventry{Hogeschool van Amsterdam}{Amsterdam}{Student-onderzoeker}{Juli 2024 - Februari 2026}
+  {Als student-onderzoeker ben ik verder gegaan aan mijn stageproject (zie hieronder voor meer informatie).}
+
+\cventry{SURF}{Amsterdam}{Stagiair}{Februari 2024 - Juli 2024}
+  {Bij SURF heb ik in het tweede jaar van mijn studie Technische Informatica
+   stage gelopen. Ik heb bij SURF gewerkt aan het ontwikkelen van een IoT
+   edge applicatie voor het verzamelen van sensordata, in samenwerking met
+   de Hogeschool van Amsterdam.}
+
+\cventry{Studentaanhuis}{Amsterdam}{Student ondersteuner}{Augustus 2023 - Februari 2024}
+  {Bij Studentaanhuis heb ik vooral technische ondersteuning geboden aan
+   ouderen. Dit zijn mensen die vaak extra hulp nodig hadden bij het gebruik
+   of begrijpen van een stuk software, hun computer of andere technische
+   problemen.}
+
+% ---------------- Right: skills + languages ----------------
+\switchcolumn
+\vspace{24pt}
+\cvsection{Vaardigheden}
+
+\skillgroup{(Embedded Systems) Software}
+  {C, C++, Make, CMake, Java, Arduino, ESP32, PlatformIO, Python}
+\skillgroup{Hardware \& Prototyping}
+  {KiCAD, LTSpice, Qucs-s}
+\skillgroup{Web/Internet of Things}
+  {MQTT, HTTP, HTML/CSS/JavaScript, Go, Python, MongoDB, MySQL, Docker}
+\skillgroup{Tools \& Others}
+  {Git, GitHub, GitLab, Figma, Linux, FreeCAD, LaTeX, MATLAB, Simulink}
+
+% \cvsection{Talen}
+% \skill{Nederlands}
+% \vspace{6pt}
+% \skill{Engels}
+
+\end{paracol}
+
+% =====================================================================
+\clearpage
+\begin{paracol}{2}
+\cvsection{Opleiding}
+
+\cventry{Technische Universiteit Eindhoven}{Eindhoven}{Electrical Engineering}{2025 - Heden}
+  {In 2025 ben ik begonnen met de universitaire opleiding ``Electrical
+   Engineering'' aan de Technische Universiteit Eindhoven.}
+
+\cventry{Hogeschool van Amsterdam}{Amsterdam}{Technische Informatica}{2023 - 2025}
+  {Na mijn propedeuse gehaald te hebben, ben ik verder gegaan met mijn
+   bachelor Technische Informatica.}
+
+\cventry{Hogeschool van Amsterdam}{Amsterdam}{Propedeuse Technische Informatica (Cum Laude)}{2022 - 2023}
+  {Ik heb in 2023 mijn propedeuse voor de opleiding HBO-ICT: Technische
+   Informatica met het predicaat ``cum laude'' behaald.}
+
+
+\switchcolumn
+\end{paracol}
+\end{document}
