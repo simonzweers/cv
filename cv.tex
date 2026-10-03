@@ -40,6 +40,16 @@
   {\sffamily\bfseries\footnotesize\color{accent}\MakeUppercase{#1}\par}%
   \vspace{12pt}}
 
+% \cventry{Project Name}{Role}{Dates}{Description}
+\newcommand{\cvproject}[3]{%
+  {\raggedright\large\color{heading}\textbf{#1}\par}%
+  \vspace{3pt}%
+  {\sffamily\scriptsize\color{datetext}\MakeUppercase{#2}\par}%
+  \vspace{3pt}%
+  {\raggedright\small\color{bodytext}#3\par}%
+  \vspace{12pt}}
+
+
 % \cventry{Organisation}{Place}{Role}{Dates}{Description}
 \newcommand{\cventry}[5]{%
   {\raggedright\large\color{heading}\textbf{#1,} #2 --- \textit{#3}\par}%
@@ -115,17 +125,33 @@ verder ontwikkel.\par}
    of begrijpen van een stuk software, hun computer of andere technische
    problemen.}
 
+\cvsection{Projects}
+
+\cvproject{DnD Character Sheet Tool}{Augustus 2026 - Heden}
+{Dit is een simele DnD (Dungeons \& Dragons) Character Sheet tool.
+	Het zorgt ervoor dat je Charactersheet kan maken, bekijken en editen in Obsidian}
+
+\cvproject{SensorSPHERE}{Feburari 2024 - Februari 2026}
+{Smart sensor data acquisistion and forwarding system.}
+
+\cvproject{IoT Game Console}{September 2024 - November 2024}
+{	Het doel was om een Game Console met een online dashboard te maken.
+	Ik heb gekozen voor een implementatie van snake.
+	In dit project heb ik geleerd om technieken in
+	IoT, Web Development en Embedded Systems te combineren.
+}
+
 % ---------------- Right: skills + languages ----------------
 \switchcolumn
 \vspace{24pt}
 \cvsection{Vaardigheden}
 
 \skillgroup{(Embedded Systems) Software}
-  {C, C++, Make, CMake, Java, Arduino, ESP32, PlatformIO, Python}
+  {C, C++, Make, CMake, Make, Java, Arduino, ESP-IDF, PlatformIO, Python}
 \skillgroup{Hardware \& Prototyping}
-  {KiCAD, LTSpice, Qucs-s}
+  {KiCAD, LTSpice, Qucs-s, Verilog, Verilator}
 \skillgroup{Web/Internet of Things}
-  {MQTT, HTTP, HTML/CSS/JavaScript, Go, Python, MongoDB, MySQL, Docker}
+  {MQTT, HTTP, HTML/CSS/JavaScript, Go, Python, MongoDB, MySQL, Docker, Nginx}
 \skillgroup{Tools \& Others}
   {Git, GitHub, GitLab, Figma, Linux, FreeCAD, LaTeX, MATLAB, Simulink}
 
